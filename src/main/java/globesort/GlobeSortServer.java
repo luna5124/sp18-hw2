@@ -98,10 +98,11 @@ public class GlobeSortServer {
             long diff = end - start;
             System.out.println("Difference is: " + diff);
             IntArray.Builder responseBuilder = IntArray.newBuilder();
+            responseBuilder.setTime(diff);
             for(Integer val : values) {
                 responseBuilder.addValues(val);
             }
-            responseBuilder.addValues(diff);
+            // responseBuilder.addValues(diff);
             IntArray response = responseBuilder.build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
