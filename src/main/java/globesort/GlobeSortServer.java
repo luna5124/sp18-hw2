@@ -89,15 +89,19 @@ public class GlobeSortServer {
         public void sortIntegers(IntArray req, final StreamObserver<IntArray> responseObserver) {
 
             Integer[] values = req.getValuesList().toArray(new Integer[req.getValuesList().size()]);
+
             long start = System.currentTimeMillis();
+            System.out.println("Start time: " + start);
             Arrays.sort(values);
             long end = System.currentTimeMillis();
+            System.out.println("End time: " + end);
             long diff = end - start;
             System.out.println("Difference is: " + diff);
             IntArray.Builder responseBuilder = IntArray.newBuilder();
             for(Integer val : values) {
                 responseBuilder.addValues(val);
             }
+            responseBuilder.addValues(diff);
             IntArray response = responseBuilder.build();
             responseObserver.onNext(response);
             responseObserver.onCompleted();
