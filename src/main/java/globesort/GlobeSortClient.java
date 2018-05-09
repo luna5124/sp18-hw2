@@ -59,7 +59,7 @@ public class GlobeSortClient {
         System.out.println("Total time used: " + diff);
         long sort_time = response.getTime();
         System.out.println("Sorting time: " + sort_time);
-        System.out.println("Application throughput: " + values.length/(sort_time/1000.0));
+        System.out.println("Application throughput: " + values.length/(diff/1000.0));
         System.out.println("One way: " + values.length/((diff - sort_time)/2000.0));
         System.out.println("Sorted array");
     }
